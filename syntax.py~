@@ -15,6 +15,19 @@ def showError(txt):
 	print("")
 	exit(-1)
 
+# function to check if the function or variable name is valid
+def isValidName(txt):
+	# underscore, not at start
+	# rest alphaNum or underscore
+	if not text[0].isalnum():
+		return false
+	for i in range[1:len(txt)]
+		if (not text[0].isalnum()) or (not text[0]=='_'):
+			return false
+	return true 
+
+# function to check funcition call
+
 def isFileName(txt):
 	txts=txt.split(".")
 	for i in range(len(txts)):
