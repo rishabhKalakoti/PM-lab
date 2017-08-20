@@ -47,22 +47,48 @@ for i in range(len(text)):
 		index.append(i)
 removeExtra(index, text)
 
-# remove strings
-#x='\n'
-#st = x.join(text)
-#flag=0
-#for i in range(len(st)):
-#	if(st[i]=='"' and flag==0):
-#		flag=1
-#	elif(flag==1 and not st[i]=='"'):
-#		index.append(i)
-#	if(flag==1 and st[i]=='"'):
-#		flag=0
-#removeExtra(index, st)
-#text = st.split("\n")
-#print(text)
+# ************************* preprocessor
+print("processing the preprocessor...")
+for i in range(len(text)):
+	if text[i].startswith("#"):
+		index.append(i)
+		
+		preTerms = text[i][1:].split("<")
+		#print(preTerms[1])
+		if(not len(preTerms) == 2):
+			showError("Incorrect preprocessor terms.")
+		if(not preTerms[0] in preWords):
+			showError("Incorrect preprocessor terms.")
+		if(not preTerms[1].endswith(">")):
+			showError("Incorrect preprocessor terms.")
+		if(not isFileName(preTerms[1].split(">")[0])):
+			showError("Incorrect filename specified in the preprocessor")
+removeExtra(index, text)
+# ************************* preprocessor done
 
-# brackets order check
+
+# ***************** remove strings
+x='\n'
+st = x.join(text)
+text=st.split('"')
+x='"#'
+st = x.join(text)
+text=st.split('"')
+flag=0
+for i in range(len(text)):
+	if text[i].startswith("#") and flag==0:
+		flag=1
+		text.pop(i)
+		text.insert(i, "$_STRING")
+	elif text[i].startswith("#") and flag==1:
+		flag=0
+		text[i]=text[i][1:]
+x=""
+st=x.join(text)
+text=st.split("\n")
+# ***************** strings removed
+
+# ***************** brackets order check
 print("checking bracket order...")
 stack = []
 s = ""
@@ -95,25 +121,7 @@ for c in s:
 			
 if not len(stack)==0 :
 	showError("incorrect brackets or quotes placement")
-# preprocessor
-print("processing the preprocessor...")
-for i in range(len(text)):
-	if text[i].startswith("#"):
-		index.append(i)
-		
-		preTerms = text[i][1:].split("<")
-		#print(preTerms[1])
-		if(not len(preTerms) == 2):
-			showError("Incorrect preprocessor terms.")
-		if(not preTerms[0] in preWords):
-			showError("Incorrect preprocessor terms.")
-		if(not preTerms[1].endswith(">")):
-			showError("Incorrect preprocessor terms.")
-		if(not isFileName(preTerms[1].split(">")[0])):
-			showError("Incorrect filename specified in the preprocessor")
-
-removeExtra(index, text)
-
+# ***************** brackets order done
 
 # the main function
 print("the job with the main function...")
