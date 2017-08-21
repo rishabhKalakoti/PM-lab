@@ -185,11 +185,35 @@ removeExtra(index, text)
 # ************** main() function done
 
 # **************************** if-else functionality
-for i in range(len(text)):
+def checkIf(text, i, index):
 	if(text[i].startswith("if") and not (text[i][2].isalnum() or text[i][2]=='_')):
-		if()
+		#if()
+		if not isLogicExp(text[i][2:].strip()[1:-1]):
+			showError("Invalid logical expression in if(...)")
+		if not text[i + 1]=="{":
+			showError("Expected { after if(...)")
+		counter=0
+		j=0
+		for j in range(i,len(text)):
+			if(text[j]=="{"):
+				counter=counter+1
+			if(text[j]=="}"):
+				counter=counter-1
+				if(counter==0):
+					break
+		if text[j+1]=="else":
+			index.append(j+1)
+		elif text[j+1].startswith("else if"):
+			text[j+1]=text[j+1][5:]
+			checkIf(text, j, index)
 		index.append(i)
+for i in range(len(text)):
+	checkIf(text, i, index)
 removeExtra(index, text)
+for i in range(len(text)):
+	if text[i]=="else":
+		showError("if(...) expected before else")
+# ***************************** if statement done *******************
 
 # statements
 print("statement check...")

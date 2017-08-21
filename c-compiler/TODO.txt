@@ -1,6 +1,6 @@
 > remove string				// done
 > function call				// done
-> if-else handler			// pending
+> if-else handler			// done
 > basic expression			// pending
 > advanced expression			// pending
 > variable assignment			// pending

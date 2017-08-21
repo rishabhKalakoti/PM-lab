@@ -6,10 +6,13 @@ blah
 */
 void main()
 {
-	if()
+	if (logicExpr)
+	{	
+	}
+	else if()
 	{
-		
 	}
 	printf("hello, world!", someFunction());
+	
 }
 
