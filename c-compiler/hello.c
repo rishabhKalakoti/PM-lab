@@ -6,7 +6,10 @@ blah
 */
 void main()
 {
-	printf("hello, world!");
-
+	if()
+	{
+		
+	}
+	printf("hello, world!", someFunction());
 }
 

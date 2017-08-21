@@ -1,0 +1,10 @@
+> remove string				// done
+> function call				// done
+> if-else handler			// pending
+> basic expression			// pending
+> advanced expression			// pending
+> variable assignment			// pending
+> variable initialization		// pending
+> logical expression handler		// pending
+> loop handler				// pending
+> advanced statement check		// pending
