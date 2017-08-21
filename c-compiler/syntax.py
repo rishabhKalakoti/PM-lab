@@ -1,5 +1,4 @@
 from basic_defn import *
-from variables import *
 
 
 #___________________________FUNCTIONS START___________________

@@ -6,7 +6,7 @@ blah
 */
 void main()
 {
-	if (logicExpr)
+	if (a==b)
 	{	
 	}
 	else if()

@@ -1,9 +1,19 @@
+from variables import *
+
 # check if statement is logical expression
 def isLogicExp(text):
+	text=text.strip()
+	# <logicExp>--<logicExp><logicOp><compExpX>|<compExp>
 	return True
 
+def isCompExp(text):
+	text=text.strip()
+	# <compExp>--<compExp><comparisionOp><arithmeticExp>|<arithmeticExp>
+	return True
 # check if statement is arithmetic expression
 def isArithmeticExp(text):
+	text=text.strip()
+	# <arithmeticExp>--<arithmeticExp><arithmeticOp><term>|
 	return True
 
 # remove elements from text stack at indices in list index
