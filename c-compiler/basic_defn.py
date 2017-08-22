@@ -1,5 +1,8 @@
 from variables import *
 
+def isInitStmt(text):
+	# <initStmt>--<dType><id>=<val>
+
 # check if statement is logical expression
 def isLogicExp(text):
 	text=text.strip()
