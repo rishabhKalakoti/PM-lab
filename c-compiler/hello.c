@@ -6,10 +6,10 @@ blah
 */
 void main()
 {
-	if (a==b)
+	if (2343-2 && 1)
 	{	
 	}
-	else if()
+	else if(12 && 32-2)
 	{
 	}
 	printf("hello, world!", someFunction());

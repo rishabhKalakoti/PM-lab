@@ -1,3 +1,4 @@
+from lex import *
 from basic_defn import *
 
 
@@ -183,6 +184,9 @@ elif(mainFlag==-1):
 removeExtra(index, text)
 # ************** main() function done
 
+# ************** the small lex
+text=theLexer(text)
+print(text)
 # **************************** if-else functionality
 def checkIf(text, i, index):
 	if(text[i].startswith("if") and not (text[i][2].isalnum() or text[i][2]=='_')):
