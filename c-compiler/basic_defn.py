@@ -1,7 +1,62 @@
 from variables import *
 
+def isFuncCall(txt):
+	flag=0
+	#**************************************
+	#if("(" in txt and ")" in txt):
+	#	if not (txt[:-1].endswith(")")
+	#		return False
+	#	if not isValidName(txt[0:txt.index()].strip())
+	#	return True
+	#return False
+	#**************************************
+	for j in range(len(txt)):
+			k=0
+			if("("==txt[j]):
+				flag=1
+				ptr=j-1
+				s=[]
+				while(ptr>=k):
+					ch=txt[ptr]
+					if not (ch in allOp or ch in moreTokens):
+						s.insert(0, ch)
+					else:
+						break
+					ptr=ptr-1
+				k=j
+				x=""
+				if not isValidName("".join(s).lstrip()):
+					print("".join(s).lstrip())
+					return False
+	if flag==1:
+		return True
+	else:
+		return False
+		
 def isInitStmt(text):
-	# <initStmt>--<dType><id>=<val>
+	text.strip()
+	# <initStmt>--<dType><id>
+	if not (" " in text):
+		return False
+	if not text[0:text.index(" ")].strip() in dataType:
+		return False
+	#print(isValidName(text[text.index(" "):-1].strip()))
+	if not isValidName(text[text.index(" "):-1].strip()):
+		return False
+	return True
+	
+def isDecStmt(text):
+	text.strip()
+	if "=" in text:
+		if not isLogicExp(text[text.index("=")+1:-1].strip()):
+			return False
+		#print(text[0:text.index("=")].strip())
+		if not (isValidName(text[0:text.index("=")].strip()) or isInitStmt(text[0:text.index("=")].strip() + ";")):
+			#print(isValidName(text[0:text.index("=")].strip()))
+			return False
+		return True
+	else:
+		return False
 
 # check if statement is logical expression
 def isLogicExp(text):
@@ -53,6 +108,7 @@ def isTerm(text):
 def removeExtra(index, text):
 	while len(index)>0:
 		text.pop(index.pop())
+		
 def showError(txt):
 	print("")
 	print("X"*25)
@@ -64,7 +120,8 @@ def showError(txt):
 def isValidName(text):
 	# underscore, not at start
 	# rest alphaNum or underscore
-	if not (not text[0]==None) and (text[0].isalpha() or text[0]=="_"):
+	#print(text)
+	if not ((not text[0]==None) and (text[0].isalpha() or text[0]=="_")):
 		return False
 	for i in range(len(text)):
 		if  not (text[i].isalnum() or text[i]=='_'):

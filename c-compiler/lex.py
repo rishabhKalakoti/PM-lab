@@ -19,6 +19,5 @@ def theLexer(text):
 		for arithOp in arithmeticOp:
 			text[i]=x.join(text[i].split(arithOp))
 		
-		# init statement
-		if text[i].split()
+		
 	return text

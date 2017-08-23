@@ -8,6 +8,7 @@ from basic_defn import *
 def checkFunctionCall(text):
 	for i in range(len(text)):
 		txt=text[i]
+		flag=0
 		for j in range(len(txt)):
 			k=0
 			if("("==txt[j]):
@@ -25,6 +26,8 @@ def checkFunctionCall(text):
 				if not isValidName("".join(s).lstrip()):
 					print("".join(s).lstrip())
 					showError("Incorrect function call")
+				flag=1
+		
 # ****************** function done.
 
 # *************** function to remove comments
@@ -186,7 +189,7 @@ removeExtra(index, text)
 
 # ************** the small lex
 text=theLexer(text)
-print(text)
+
 # **************************** if-else functionality
 def checkIf(text, i, index):
 	if(text[i].startswith("if") and not (text[i][2].isalnum() or text[i][2]=='_')):
@@ -233,6 +236,15 @@ removeExtra(index, text)
 # check function call
 print("checking function call...")
 checkFunctionCall(text)
+
+# checking statements...
+for i in range(len(text)):
+	if not (isInitStmt(text[i]) or isDecStmt(text[i]) or isFuncCall(text[i])):
+		showError("Incorrect statement.")
+	else:
+		index.append(i)
+removeExtra(index, text)
+
 print("done.")
 
 
